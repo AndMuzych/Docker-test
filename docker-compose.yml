@@ -7,3 +7,20 @@ services:
     container_name: react-app
     ports:
     - 3000:80
+networks:
+      - react
+
+  nginx:
+    image: nginx:alpine
+    container_name: react-nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - react
+
+networks:
+  react:
+    driver: bridge
