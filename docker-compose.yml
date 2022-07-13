@@ -7,9 +7,3 @@ services:
     container_name: react-app
     ports:
     - 3000:3000
-    networks:
-      - react
-
-networks:
-  react:
-    driver: bridge
