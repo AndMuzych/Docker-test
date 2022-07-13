@@ -1,10 +1,10 @@
-version: "3.7"
+: "3.7"
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: react-app1
+    container_name: react-app
     ports:
     - 3000:3000
     networks:
@@ -12,13 +12,12 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: react-nginx1
+    container_name: react-nginx
     restart: unless-stopped
     ports:
       - 80:80
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-      - ./public:/public
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
       - react
 
